@@ -27,17 +27,17 @@ export const getAllPrograms = () => {
   };
 };
 
-export const addProgram = (payload, user) => {
+export const addProgram = (program, payload) => {
   return async function (dispatch) {
     dispatch({ type: ADD_PROGRAM_PENDING });
     try {
       const json = await axios.post(
         `${URL_BASE}/programs`,
-        payload,
+        program,
         { total: 1 },
         {
           headers: {
-            authorization: `jwt ${user}`,
+            authorization: `jwt ${payload}`,
             "content-type": "application/json",
           },
         }
@@ -45,6 +45,28 @@ export const addProgram = (payload, user) => {
       dispatch({ type: ADD_PROGRAM_SUCCESS, payload: json.data });
     } catch (error) {
       dispatch({ type: ADD_PROGRAM_REJECTED, payload: error });
+    }
+  };
+};
+
+export const deleteProgram = (program, payload) => {
+  return async function (dispatch) {
+    dispatch({ type: DELETE_PROGRAM_PENDING });
+    try {
+      const json = await axios.delete(
+        `${URL_BASE}/programs`,
+        program,
+        { total: 1 },
+        {
+          headers: {
+            authorization: `jwt ${payload}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      dispatch({ type: DELETE_PROGRAM_SUCCESS, payload: json.data });
+    } catch (error) {
+      dispatch({ type: DELETE_PROGRAM_REJECTED, payload: error });
     }
   };
 };

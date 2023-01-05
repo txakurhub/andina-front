@@ -70,3 +70,25 @@ export const deleteProgram = (program, payload) => {
     }
   };
 };
+
+export const editProgram = (program, payload) => {
+  return async function (dispatch) {
+    dispatch({ type: EDIT_PROGRAM_PENDING });
+    try {
+      const json = await axios.put(
+        `${URL_BASE}/programs`,
+        program,
+        { total: 1 },
+        {
+          headers: {
+            authorization: `jwt ${payload}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      dispatch({ type: EDIT_PROGRAM_SUCCESS, payload: json.data });
+    } catch (error) {
+      dispatch({ type: EDIT_PROGRAM_REJECTED, payload: error });
+    }
+  };
+};

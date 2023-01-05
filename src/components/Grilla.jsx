@@ -10,5 +10,10 @@ export const Grilla = () => {
   useEffect(() => {
     dispatch(getAllPrograms());
   }, [dispatch]);
-  return <div>GRILLA</div>;
+
+  return isLoading
+    ? "is Loading..."
+    : allPrograms.map((p) => {
+        return <div>GRILLA</div>;
+      });
 };

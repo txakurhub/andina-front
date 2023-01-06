@@ -4,6 +4,7 @@ const Home = () => {
     return (
         <div>
             <Grilla/>
+            <h2>HOME</h2>
         </div>
     )
 };

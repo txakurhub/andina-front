@@ -14,6 +14,13 @@ export const Grilla = () => {
   return isLoading
     ? "is Loading..."
     : allPrograms.map((p) => {
-        return <div>GRILLA</div>;
+        return (
+          <div key={allPrograms.indexOf(p)}>
+            <h4>{p.name}</h4>
+            <h4>{p.date}</h4>
+            <h4>{p.description}</h4>
+            <img src={p.imgUrl} alt="" width={250} height={250}/>
+          </div>
+        );
       });
 };

@@ -4,7 +4,7 @@ import { userLogin } from "../components/redux/actions/loginActions";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [user, setUser] = useState({ user: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -15,18 +15,26 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(userLogin());
-    dispatch();
+    e.preventDefault();
+    dispatch(userLogin(user));
   };
   return (
     <div>
       LOGIN
       <form onSubmit={handleSubmit}>
         <h4>Usuario</h4>
-        <input type="text" placeholder="Usuario" onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="Email"
+          name="email"
+          value={user.email}
+          onChange={handleChange}
+        />
         <h4>Contraseña</h4>
         <input
           type="password"
+          name="password"
+          value={user.password}
           placeholder="Contraseña"
           onChange={handleChange}
         />

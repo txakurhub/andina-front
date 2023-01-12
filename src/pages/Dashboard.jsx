@@ -1,8 +1,6 @@
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { token } = useSelector((state) => state.login);
   const navigate = useNavigate();
 
   const userData = window.localStorage.getItem("userData");

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Grilla } from "../components/Grilla";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -10,7 +11,11 @@ const Dashboard = () => {
     alert("No tienes permisos suficientes");
     navigate("/");
   } else {
-    return <div>DASHBOARD</div>;
+    return (
+      <div>
+        <Grilla />
+      </div>
+    );
   }
 };
 

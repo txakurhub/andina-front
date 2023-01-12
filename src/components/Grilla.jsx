@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPrograms } from "./redux/actions/programActions";
+import { getAllPrograms } from "../redux/actions/programActions";
 
 export const Grilla = () => {
   const dispatch = useDispatch();

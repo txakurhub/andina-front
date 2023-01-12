@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { userLogin } from "../components/redux/actions/loginActions";
+import { userLogin } from "../redux/actions/loginActions";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

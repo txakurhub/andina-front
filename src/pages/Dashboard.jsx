@@ -1,25 +1,20 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import Card from "../components/Card";
+import { getAllPrograms } from "../redux/actions/programActions";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { allPrograms, isLoading } = useSelector((state) => state.program);
 
   const userData = window.localStorage.getItem("userData");
   console.log(userData);
 
-  const handleClick = () => {
-    Swal.fire({
-      title: "Sweet!",
-      text: "Modal with a custom image.",
-      imageUrl: "https://unsplash.it/400/200",
-      imageWidth: 400,
-      imageHeight: 200,
-      imageAlt: "Custom image",
-    });
-  };
+  useEffect(() => {
+    dispatch(getAllPrograms());
+  }, [dispatch]);
 
   if (!userData) {
     alert("No tienes permisos suficientes");

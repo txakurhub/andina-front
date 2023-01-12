@@ -14,6 +14,7 @@ export const userLogin = (payload) => {
       window.localStorage.setItem("userData", json.data);
       dispatch({ type: LOGIN_SUCCESS, payload: json.data });
     } catch (error) {
+      window.localStorage.clear()
       dispatch({ type: LOGIN_REJECTED, payload: error });
     }
   };

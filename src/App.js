@@ -4,11 +4,13 @@ import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/dashboard", element: <Login /> },
+    { path: "/login", element: <Login /> },
+    { path: "/dashboard", element: <Dashboard /> },
   ]);
   return routes;
 };

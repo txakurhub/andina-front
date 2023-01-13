@@ -10,7 +10,6 @@ const Dashboard = () => {
   const { allPrograms, isLoading } = useSelector((state) => state.program);
 
   const userData = window.localStorage.getItem("userData");
-  console.log(userData);
 
   useEffect(() => {
     dispatch(getAllPrograms());

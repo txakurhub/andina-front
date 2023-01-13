@@ -1,6 +1,11 @@
 import Swal from "sweetalert2";
 
 const Card = ({ name, date, description, imgUrl }) => {
+  //CARD PARA ADMINISTRADOR
+  //  --MODAL V
+  //          >EDITAR
+  //          >ELIMINAR
+  //          >CANCELAR
   const handleClick = () => {
     Swal.fire({
       imageUrl: imgUrl,
@@ -19,10 +24,7 @@ const Card = ({ name, date, description, imgUrl }) => {
       if (result.isConfirmed) {
         //EDIT program action
         Swal.fire("EDIT PAGE FORM", "success");
-      } else if (
-        /* Read more about handling dismissals below */
-        result.isDenied
-      ) {
+      } else if (result.isDenied) {
         //DELETE PROGRAM ACTION
         Swal.fire("Eliminado", "El programa fue eliminado con éxito", "error");
       }
@@ -35,7 +37,6 @@ const Card = ({ name, date, description, imgUrl }) => {
       <h4>{date}</h4>
       <h4>{description}</h4>
       <img src={imgUrl} alt="" />
-      <div></div>
     </div>
   );
 };

@@ -1,11 +1,13 @@
 import Swal from "sweetalert2";
 
 const Card = ({ name, date, description, imgUrl }) => {
+
   //CARD PARA ADMINISTRADOR
   //  --MODAL V
   //          >EDITAR
   //          >ELIMINAR
   //          >CANCELAR
+
   const handleClick = () => {
     Swal.fire({
       imageUrl: imgUrl,
@@ -22,7 +24,7 @@ const Card = ({ name, date, description, imgUrl }) => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        //EDIT program action
+        //EDIT program page
         Swal.fire("EDIT PAGE FORM", "success");
       } else if (result.isDenied) {
         //DELETE PROGRAM ACTION

@@ -26,6 +26,7 @@ const Dashboard = () => {
         <h2>Programación actual</h2>
         {allPrograms.map((p) => (
           <Card
+            key={allPrograms.indexOf(p)}
             name={p.name}
             date={p.date}
             description={p.description}

@@ -3,24 +3,28 @@ import Swal from "sweetalert2";
 const Card = ({ name, date, description, imgUrl }) => {
   const handleClick = () => {
     Swal.fire({
-      imageUrl: { imgUrl },
-      title: { name },
-      text: { date },
+      imageUrl: imgUrl,
+      title: `Título: ${name}`,
+      text: `Fecha y horario: ${date}`,
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: "Custom image",
+      showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Eliminar",
-      cancelButtonText: "Editar",
+      confirmButtonText: "Editar",
+      denyButtonText: `Eliminar`,
+      cancelButtonText: "Cancelar",
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        //EDIT program action
+        Swal.fire("EDIT PAGE FORM", "success");
       } else if (
         /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
+        result.isDenied
       ) {
-        Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
+        //DELETE PROGRAM ACTION
+        Swal.fire("Eliminado", "El programa fue eliminado con éxito", "error");
       }
     });
   };

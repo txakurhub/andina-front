@@ -38,7 +38,7 @@ const Card = ({ name, date, description, imgUrl }) => {
       <h4>{name}</h4>
       <h4>{date}</h4>
       <h4>{description}</h4>
-      <img src={imgUrl} alt="" />
+      <img src={imgUrl} alt="" height="250px" width="250px"/>
     </div>
   );
 };

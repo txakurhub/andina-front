@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editProgram } from "../redux/actions/programActions";
 
 const EditForm = ({ name, date, description, imgUrl }) => {
+  const dispatch = useDispatch();
+  const userToken = window.localStorage.getItem("userData");
   const [currentProgram, setCurrentProgram] = useState({
     name,
     date,
     description,
     imgUrl,
   });
+
   const handleChange = (e) => {
     e.preventDefault();
     setCurrentProgram({
@@ -14,9 +19,15 @@ const EditForm = ({ name, date, description, imgUrl }) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(editProgram(currentProgram, userToken));
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>Nombre:</label>
         <input
           type="text"
@@ -60,6 +71,7 @@ const EditForm = ({ name, date, description, imgUrl }) => {
           required
           placeholder={currentProgram.imgUrl}
         />
+        <button type="submit">Modificar</button>
       </form>
     </div>
   );

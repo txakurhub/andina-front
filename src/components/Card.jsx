@@ -35,11 +35,11 @@ const Card = ({ name, date, description, imgUrl }) => {
           text: `Está seguro que desea eliminar este programa de la grilla`,
           showDenyButton: true,
           confirmButtonText: "Eliminar definitivamente",
-        }).then(result => {
-          if(result.isConfirmed){
+        }).then((result) => {
+          if (result.isConfirmed) {
             // DELETE ACTION
           }
-        })
+        });
       }
     });
   };

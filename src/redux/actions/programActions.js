@@ -11,6 +11,9 @@ import {
   EDIT_PROGRAM_PENDING,
   EDIT_PROGRAM_REJECTED,
   EDIT_PROGRAM_SUCCESS,
+  GET_PROGRAM_BY_ID_PENDING,
+  GET_PROGRAM_BY_ID_SUCCESS,
+  GET_PROGRAM_BY_ID_REJECTED,
 } from "../types/programTypes";
 import { URL_BASE } from "../config";
 import axios from "axios";
@@ -23,6 +26,18 @@ export const getAllPrograms = () => {
       dispatch({ type: GET_ALL_PROGRAMS_SUCCESS, payload: json.data });
     } catch (error) {
       dispatch({ type: GET_ALL_PROGRAMS_REJECTED, payload: error });
+    }
+  };
+};
+
+export const getProgramById = (id) => {
+  return async function (dispatch) {
+    dispatch({ type: GET_PROGRAM_BY_ID_PENDING });
+    try {
+      const json = await axios(`${URL_BASE}/program/${id}`);
+      dispatch({ type: GET_PROGRAM_BY_ID_SUCCESS, payload: json.data });
+    } catch (error) {
+      dispatch({ type: GET_PROGRAM_BY_ID_REJECTED, payload: error });
     }
   };
 };
